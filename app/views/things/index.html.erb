@@ -1,0 +1,178 @@
+<div>
+  <div>
+    <h1>
+      List of all things
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new thing
+    </h2>
+
+    <form action="/insert_thing" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="parent_id_box">
+          Parent
+        </label>
+
+        <input type="text" id="parent_id_box" name="query_parent_id">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="exclude_from_search_box" name="query_exclude_from_search" value="1">
+
+        <label for="exclude_from_search_box">Exclude from search</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="can_contain_things_box" name="query_can_contain_things" value="1">
+
+        <label for="can_contain_things_box">Can contain things</label>
+      </div>
+
+      <div>
+        <label for="image_url_box">
+          Image url
+        </label>
+
+        <input type="text" id="image_url_box" name="query_image_url">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create thing
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Parent
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Exclude from search
+        </th>
+
+        <th>
+          Can contain things
+        </th>
+
+        <th>
+          Image url
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_things.each do |a_thing| %>
+      <tr>
+        <td>
+          <%= a_thing.id %>
+        </td>
+
+        <td>
+          <%= a_thing.name %>
+        </td>
+
+        <td>
+          <%= a_thing.parent_id %>
+        </td>
+
+        <td>
+          <%= a_thing.owner_id %>
+        </td>
+
+        <td>
+          <%= a_thing.exclude_from_search %>
+        </td>
+
+        <td>
+          <%= a_thing.can_contain_things %>
+        </td>
+
+        <td>
+          <%= a_thing.image_url %>
+        </td>
+
+        <td>
+          <%= a_thing.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_thing.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_thing.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/things/<%= a_thing.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
