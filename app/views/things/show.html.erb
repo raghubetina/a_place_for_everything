@@ -4,6 +4,22 @@
       Thing #<%= @the_thing.id %> details
     </h1>
 
+    <h2>
+      Contains
+    </h2>
+
+    <ul>
+      <% @the_thing.contained_things.each do |thing| %>
+        <li>
+          <a href="/things/<%= thing.id %>"><%= thing.name %></a>
+        </li>
+      <% end %>
+    </ul>
+
+    <hr>
+
+
+
     <div>
       <div>
         <a href="/things">
