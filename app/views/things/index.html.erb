@@ -102,6 +102,10 @@
         </th>
 
         <th>
+          Contained things count
+        </th>
+
+        <th>
           Image url
         </th>
 
@@ -122,52 +126,56 @@
       </tr>
 
       <% @list_of_things.each do |a_thing| %>
-      <tr>
-        <td>
-          <%= a_thing.id %>
-        </td>
+        <tr>
+          <td>
+            <%= a_thing.id %>
+          </td>
 
-        <td>
-          <%= a_thing.name %>
-        </td>
+          <td>
+            <%= a_thing.name %>
+          </td>
 
-        <td>
-          <%= a_thing.container_id %>
-        </td>
+          <td>
+            <%= a_thing.container_id %>
+          </td>
 
-        <td>
-          <%= a_thing.owner_id %>
-        </td>
+          <td>
+            <%= a_thing.owner_id %>
+          </td>
 
-        <td>
-          <%= a_thing.exclude_from_search %>
-        </td>
+          <td>
+            <%= a_thing.exclude_from_search %>
+          </td>
 
-        <td>
-          <%= a_thing.can_contain_things %>
-        </td>
+          <td>
+            <%= a_thing.can_contain_things %>
+          </td>
 
-        <td>
-          <%= a_thing.image_url %>
-        </td>
+          <td>
+            <%= a_thing.contained_things_count %>
+          </td>
 
-        <td>
-          <%= a_thing.description %>
-        </td>
+          <td>
+            <%= a_thing.image_url %>
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_thing.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_thing.updated_at) %> ago
-        </td>
+          <td>
+            <%= a_thing.description %>
+          </td>
 
-        <td>
-          <a href="/things/<%= a_thing.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <%= time_ago_in_words(a_thing.created_at) %> ago
+          </td>
+          <td>
+            <%= time_ago_in_words(a_thing.updated_at) %> ago
+          </td>
+
+          <td>
+            <a href="/things/<%= a_thing.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
