@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get("/")
+
+  root "things#index"
+
   # Routes for the Thing resource:
 
   # CREATE
