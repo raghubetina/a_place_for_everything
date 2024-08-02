@@ -23,5 +23,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-  
+  has_many  :things, foreign_key: "owner_id", dependent: :destroy
 end

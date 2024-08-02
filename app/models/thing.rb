@@ -14,4 +14,10 @@
 #  owner_id            :integer
 #
 class Thing < ApplicationRecord
+  belongs_to :owner, class_name: "User"
+
+  has_many  :contained_things, class_name: "Thing", foreign_key: "container_id"
+  belongs_to :container, class_name: "Thing"
+
+  validates :name, presence: true
 end
