@@ -25,18 +25,16 @@
 
       <div>
         <label for="container_id_box">
-          Parent
+          Container
         </label>
 
-        <input type="text" id="container_id_box" name="query_container_id">
-      </div>
-
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
-
-        <input type="text" id="owner_id_box" name="query_owner_id">
+        <select name="query_container_id" id="container_id_box">
+          <% current_user.things.where(can_contain_things: true).each do |thing| %>
+            <option value="<%= thing.id %>">
+              <%= thing.name %>
+            </option>
+          <% end %>
+        </select>
       </div>
 
       <div>
