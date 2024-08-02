@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_234819) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_02_000326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "things", force: :cascade do |t|
     t.string "name"
-    t.integer "parent_id"
+    t.integer "container_id"
     t.integer "owner_id"
     t.boolean "exclude_from_search"
     t.boolean "can_contain_things"

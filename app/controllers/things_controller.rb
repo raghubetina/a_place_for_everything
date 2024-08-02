@@ -20,7 +20,7 @@ class ThingsController < ApplicationController
   def create
     the_thing = Thing.new
     the_thing.name = params.fetch("query_name")
-    the_thing.parent_id = params.fetch("query_parent_id")
+    the_thing.container_id = params.fetch("query_container_id")
     the_thing.owner_id = params.fetch("query_owner_id")
     the_thing.exclude_from_search = params.fetch("query_exclude_from_search", false)
     the_thing.can_contain_things = params.fetch("query_can_contain_things", false)
@@ -40,7 +40,7 @@ class ThingsController < ApplicationController
     the_thing = Thing.where({ :id => the_id }).at(0)
 
     the_thing.name = params.fetch("query_name")
-    the_thing.parent_id = params.fetch("query_parent_id")
+    the_thing.container_id = params.fetch("query_container_id")
     the_thing.owner_id = params.fetch("query_owner_id")
     the_thing.exclude_from_search = params.fetch("query_exclude_from_search", false)
     the_thing.can_contain_things = params.fetch("query_can_contain_things", false)

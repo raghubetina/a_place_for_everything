@@ -30,7 +30,7 @@
         Parent
       </dt>
       <dd>
-        <%= @the_thing.parent_id %>
+        <%= @the_thing.container_id %>
       </dd>
 
       <dt>
@@ -104,11 +104,11 @@
       </div>
 
       <div>
-        <label for="parent_id_box">
+        <label for="container_id_box">
           Parent
         </label>
 
-        <input type="text" id="parent_id_box" name="query_parent_id" value="<%= @the_thing.parent_id %>">
+        <input type="text" id="container_id_box" name="query_container_id" value="<%= @the_thing.container_id %>">
       </div>
 
       <div>

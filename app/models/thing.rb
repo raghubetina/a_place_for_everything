@@ -10,8 +10,8 @@
 #  name                :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  container_id        :integer
 #  owner_id            :integer
-#  parent_id           :integer
 #
 class Thing < ApplicationRecord
 end
