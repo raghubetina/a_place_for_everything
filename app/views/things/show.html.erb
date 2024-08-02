@@ -18,7 +18,51 @@
 
     <hr>
 
+    <form action="/insert_thing" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
 
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <input type="hidden" name="query_container_id" value="<%= @the_thing.id %>">
+
+      <div>
+        <input type="checkbox" id="exclude_from_search_box" name="query_exclude_from_search" value="1">
+
+        <label for="exclude_from_search_box">Exclude from search</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="can_contain_things_box" name="query_can_contain_things" value="1">
+
+        <label for="can_contain_things_box">Can contain things</label>
+      </div>
+
+      <div>
+        <label for="image_url_box">
+          Image url
+        </label>
+
+        <input type="text" id="image_url_box" name="query_image_url">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create thing
+      </button>
+    </form>
+
+    <hr>
 
     <div>
       <div>
@@ -103,7 +147,6 @@
 
 <hr>
 
-
 <div>
   <div>
     <h2>
@@ -139,7 +182,7 @@
         <input type="checkbox" id="exclude_from_search_box" name="query_exclude_from_search" value="1" <%= "checked" if @the_thing.exclude_from_search %>>
 
         <label for="exclude_from_search_box">
-            Exclude from search
+          Exclude from search
         </label>
       </div>
 
@@ -147,7 +190,7 @@
         <input type="checkbox" id="can_contain_things_box" name="query_can_contain_things" value="1" <%= "checked" if @the_thing.can_contain_things %>>
 
         <label for="can_contain_things_box">
-            Can contain things
+          Can contain things
         </label>
       </div>
 
