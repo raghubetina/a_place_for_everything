@@ -14,13 +14,18 @@
       Add a new thing
     </h2>
 
-    <form action="/insert_thing" method="post">
+    <form action="/insert_thing" method="post" enctype="multipart/form-data">
       <div>
         <label for="name_box">
           Name
         </label>
 
         <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="image_box">Image</label>
+        <input type="file" id="image_box" name="query_image">
       </div>
 
       <div>
@@ -106,7 +111,7 @@
         </th>
 
         <th>
-          Image url
+          Image
         </th>
 
         <th>
@@ -156,7 +161,7 @@
           </td>
 
           <td>
-            <%= a_thing.image_url %>
+            <img src="<%= a_thing.image_url %>" width="200">
           </td>
 
           <td>

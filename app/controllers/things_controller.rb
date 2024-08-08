@@ -20,6 +20,7 @@ class ThingsController < ApplicationController
   def create
     the_thing = Thing.new
     the_thing.name = params.fetch("query_name")
+    the_thing.image = params.fetch("query_image", nil)
     the_thing.container_id = params.fetch("query_container_id")
     the_thing.owner_id = current_user.id
     the_thing.exclude_from_search = params.fetch("query_exclude_from_search", false)

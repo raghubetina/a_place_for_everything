@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_08_175234) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_08_204507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_08_175234) do
     t.integer "contained_things_count", default: 0
     t.string "ancestry"
     t.vector "embedding", limit: 2000
+    t.string "image"
     t.index ["ancestry"], name: "index_things_on_ancestry"
   end
 

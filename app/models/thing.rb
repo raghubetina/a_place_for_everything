@@ -9,6 +9,7 @@
 #  description            :text
 #  embedding              :vector(2000)
 #  exclude_from_search    :boolean
+#  image                  :string
 #  image_url              :string
 #  name                   :string
 #  created_at             :datetime         not null
@@ -33,6 +34,8 @@ class Thing < ApplicationRecord
   validates :name, presence: true
 
   before_save :set_embedding
+
+  mount_uploader :image, ImageUploader
 
   def set_embedding
     client = OpenAI::Client.new(
