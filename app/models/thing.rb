@@ -28,4 +28,8 @@ class Thing < ApplicationRecord
   belongs_to :container, class_name: "Thing", counter_cache: :contained_things_count, optional: true
 
   validates :name, presence: true
+
+  def path_to_s
+    path.pluck(:name).join(" > ")
+  end
 end
