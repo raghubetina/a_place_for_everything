@@ -37,6 +37,14 @@ class Thing < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["can_contain_things", "contained_things_count", "container_id", "created_at", "description", "exclude_from_search", "name", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["container"]
+  end
+
   def set_embedding
     client = OpenAI::Client.new(
       access_token: ENV.fetch("OPENAI_KEY")

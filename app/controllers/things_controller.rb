@@ -1,8 +1,8 @@
 class ThingsController < ApplicationController
   def index
-    matching_things = Thing.all
+    @q = current_user.things.ransack(params[:q])
 
-    @list_of_things = matching_things.where({ :exclude_from_search => false}).order({ :created_at => :desc })
+    @list_of_things = @q.result(:distinct => true).includes(:container)
 
     render({ :template => "things/index" })
   end

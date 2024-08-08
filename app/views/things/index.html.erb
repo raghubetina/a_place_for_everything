@@ -8,6 +8,32 @@
 
 <hr>
 
+<h2>Filter</h2>
+
+<%= search_form_for @q do |f| %>
+  <p>Narrow results:</p>
+
+  <div>
+    <%= f.label :name_cont, "Name containing" %>
+    <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
+  </div>
+
+  <div>
+  <% current_user.things.where({ :can_contain_things => true }).all.each do |thing| %>
+    <label>
+      <%= check_box_tag('q[container_id_eq_any][]', thing.id, (true if @q.container_id_eq_any.try(:include?, thing.id))) %>
+      <%= thing.name %>
+    </label>
+  <% end %>
+</div>
+
+  <%= f.submit :class => "btn btn-primary btn-block" %>
+  
+  <a href="/things">Clear filters</a>
+<% end %>
+
+<hr>
+
 <div>
   <div>
     <h2>
@@ -91,7 +117,7 @@
         </th>
 
         <th>
-          Parent
+          Container
         </th>
 
         <th>
@@ -141,11 +167,11 @@
           </td>
 
           <td>
-            <%= a_thing.container_id %>
+            <%= a_thing.container.name %>
           </td>
 
           <td>
-            <%= a_thing.owner_id %>
+            <%= a_thing.owner.email %>
           </td>
 
           <td>
