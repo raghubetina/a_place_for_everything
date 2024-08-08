@@ -78,19 +78,11 @@
     <table border="1">
       <tr>
         <th>
-          ID
+          Image
         </th>
 
         <th>
           Name
-        </th>
-
-        <th>
-          Parent
-        </th>
-
-        <th>
-          Owner
         </th>
 
         <th>
@@ -106,41 +98,17 @@
         </th>
 
         <th>
-          Image url
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
         </th>
       </tr>
 
       <% @list_of_things.each do |a_thing| %>
         <tr>
           <td>
-            <%= a_thing.id %>
+            <%= a_thing.image_url %>
           </td>
 
           <td>
             <%= a_thing.path.pluck(:name).join(" > ") %>
-          </td>
-
-          <td>
-            <%= a_thing.container_id %>
-          </td>
-
-          <td>
-            <%= a_thing.owner_id %>
           </td>
 
           <td>
@@ -153,21 +121,6 @@
 
           <td>
             <%= a_thing.contained_things_count %>
-          </td>
-
-          <td>
-            <%= a_thing.image_url %>
-          </td>
-
-          <td>
-            <%= a_thing.description %>
-          </td>
-
-          <td>
-            <%= time_ago_in_words(a_thing.created_at) %> ago
-          </td>
-          <td>
-            <%= time_ago_in_words(a_thing.updated_at) %> ago
           </td>
 
           <td>
