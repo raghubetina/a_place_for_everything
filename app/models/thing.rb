@@ -3,6 +3,7 @@
 # Table name: things
 #
 #  id                     :bigint           not null, primary key
+#  ancestry               :string
 #  can_contain_things     :boolean
 #  contained_things_count :integer          default(0)
 #  description            :text
@@ -14,11 +15,17 @@
 #  container_id           :integer
 #  owner_id               :integer
 #
+# Indexes
+#
+#  index_things_on_ancestry  (ancestry)
+#
 class Thing < ApplicationRecord
+  has_ancestry
+
   belongs_to :owner, class_name: "User"
 
   has_many  :contained_things, class_name: "Thing", foreign_key: "container_id"
-  belongs_to :container, class_name: "Thing", counter_cache: :contained_things_count
+  belongs_to :container, class_name: "Thing", counter_cache: :contained_things_count, optional: true
 
   validates :name, presence: true
 end

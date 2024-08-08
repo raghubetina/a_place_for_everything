@@ -132,7 +132,7 @@
           </td>
 
           <td>
-            <%= a_thing.name %>
+            <%= a_thing.path.pluck(:name).join(" > ") %>
           </td>
 
           <td>
