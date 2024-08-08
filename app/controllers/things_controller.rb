@@ -2,7 +2,7 @@ class ThingsController < ApplicationController
   def index
     matching_things = Thing.all
 
-    @list_of_things = matching_things.order({ :created_at => :desc })
+    @list_of_things = matching_things.where({ :exclude_from_search => false}).order({ :created_at => :desc })
 
     render({ :template => "things/index" })
   end
