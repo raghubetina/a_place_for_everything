@@ -1,0 +1,47 @@
+{
+  "name": "sample_data",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "things"
+    ],
+    "properties": {
+      "things": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "container",
+            "can_contain_things",
+            "exclude_from_search"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the thing. Examples: 'Living room', 'Bookcase', 'Top shelf', 'Passport case', 'Passport'"
+            },
+            "container": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "The name of the other thing which contains this thing. Can be null if the thing isn't contained within any other thing. Examples: for 'Living room', null; for 'Bookcase', 'Living room'; for 'Top shelf', 'Bookcase'; for 'Passport case', 'Top shelf'; for 'Passport', 'Passport case'"
+            },
+            "can_contain_things": {
+              "type": "boolean",
+              "description": "Whether or not the thing can contain other things. Examples: for 'Living room', true; for 'Bookcase', true; for 'Top shelf', true; for 'Passport case', true; for 'Passport', false"
+            },
+            "exclude_from_search": {
+              "type": "boolean",
+              "description": "Whether or not the thing should appear in search results. Should be false for rooms and furniture (things that are unlikely to move and get lost). Examples: for 'Living room', true; for 'Bookcase', true; for 'Top shelf', true; for 'Passport case', false; for 'Passport', false"
+            }
+          }
+        }
+      }
+    }
+  }
+}

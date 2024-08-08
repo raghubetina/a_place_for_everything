@@ -1,8 +1,8 @@
 class ThingsController < ApplicationController
   def index
-    matching_things = Thing.all
+    @q = current_user.things.ransack(params[:q])
 
-    @list_of_things = matching_things.order({ :created_at => :desc })
+    @list_of_things = @q.result(:distinct => true).includes(:container)
 
     render({ :template => "things/index" })
   end
@@ -20,6 +20,7 @@ class ThingsController < ApplicationController
   def create
     the_thing = Thing.new
     the_thing.name = params.fetch("query_name")
+    the_thing.image = params.fetch("query_image", nil)
     the_thing.container_id = params.fetch("query_container_id")
     the_thing.owner_id = current_user.id
     the_thing.exclude_from_search = params.fetch("query_exclude_from_search", false)

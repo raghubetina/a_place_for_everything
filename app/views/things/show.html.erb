@@ -219,3 +219,11 @@
 </div>
 
 <hr>
+
+<% @the_thing.nearest_neighbors(:embedding, distance: "cosine").where(owner: current_user).where(exclude_from_search: false).first(5).each do |other_thing| %>
+  <li>
+    <%= other_thing.name %>
+
+    (Distance: <%= other_thing.neighbor_distance %>)
+  </li>
+<% end %>

@@ -5,6 +5,15 @@ ruby "3.2.1"
 
 gem "ancestry"
 
+gem "neighbor"
+
+gem "ruby-openai"
+
+gem "carrierwave"
+gem "cloudinary"
+
+gem "ransack"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
